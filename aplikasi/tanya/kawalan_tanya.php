@@ -443,7 +443,7 @@ class Kawalan_Tanya extends Tanya
 		//echo '<pre>$data:'; print_r($data) . '</pre>';
 		//return $this->db->selectAll($sql);
 		return $data;
-	}	
+	}
 	
 	public function xhrInsert() 
 	{
