@@ -410,9 +410,7 @@ class Kawalan extends Kawal
 		{// mula ulang table
 			$bulan='pom_bln11.mdt_' . $bln . '11';
 			
-			$medan='concat(substring(newss,1,3),\' \',substring(newss,4,3),\' \','.
-			'substring(newss,7,3),\' \',substring(newss,10,3), status)'.
-			' as sidap,' . "\r" . 'nama,msic08,terima,hasil,dptLain,web,' .
+			$medan='newss,nama,msic08,terima,hasil,dptLain,web,' .
 			'stok,staf,gaji,sebab,outlet,\'' . $bln . '11\'' . "\r";
 
 			$sql[]='SELECT ' . $medan . 'FROM ' . $bulan . ' WHERE newss="' . $id . '" ';
@@ -426,9 +424,7 @@ class Kawalan extends Kawal
 		{// mula ulang table
 			$bulan='pom_bln12.mdt_' . $bln . '12';
 			
-			$medan='concat(substring(newss,1,3),\' \',substring(newss,4,3),\' \','.
-			'substring(newss,7,3),\' \',substring(newss,10,3), status)'.
-			' as sidap,' . "\r" . 'nama,msic08,terima,hasil,dptLain,web,' .
+			$medan='newss,nama,msic08,terima,hasil,dptLain,web,' .
 			'stok,staf,gaji,sebab,outlet,\'' . $bln . '12\'' . "\r";
 
 			$sql[]='SELECT ' . $medan . 'FROM ' . $bulan . ' WHERE newss="' . $id . '" ';
@@ -443,9 +439,7 @@ class Kawalan extends Kawal
 		{// mula ulang table
 			$bulan='pom_bln13.mdt_' . $bln . '13';
 			
-			$medan='concat(substring(newss,1,3),\' \',substring(newss,4,3),\' \','.
-			'substring(newss,7,3),\' \',substring(newss,10,3), utama)'.
-			' as sidap,' . "\r" . 'nama,msic,terima,hasil,dptLain,web,' .
+			$medan='newss,nama,msic,terima,hasil,dptLain,web,' .
 			'stok,staf,gaji,sebab,outlet,\'' . $bln . '13\'' . "\r";
 
 			$sql[]='SELECT ' . $medan . 'FROM ' . $bulan . ' WHERE newss="' . $id . '" ';
@@ -506,7 +500,7 @@ class Kawalan extends Kawal
 				}
             }// tamat ulang table
 			
-			echo '<pre>$data[dpt]::'; print_r($data['dpt']) . '<pre>';
+			//echo '<pre>$data[dpt]::'; print_r($data['dpt']) . '<pre>';
 			
 			// 3. cari beza antara 2 bulan
 			foreach ($data as $medan => $key)
@@ -518,8 +512,7 @@ class Kawalan extends Kawal
 					$dulu = ($bln==0) ? 0 : $key[$bln-1]; 
 					$kini = $key[$bln];
 					
-					echo '<br>$medan:'.$medan.'|$dulu:'.$dulu.'|$kini:'.$kini.'|' .
-					kira2($dulu,$kini);
+					//echo '<br>$medan:'.$medan.'|$dulu:'.$dulu.'|$kini:'.$kini.'|' .kira2($dulu,$kini);
 
 				}// tamat ulang table
 			}// tamat ulang data
@@ -550,15 +543,16 @@ class Kawalan extends Kawal
 		/*
 		echo '<pre>';
 		//echo '$kesID:<br>'; print_r($kesID); 
-        echo '$this->lihat->kesID:<br>'; print_r($this->lihat->kesID); 
+        echo '$this->lihat->kesID:<br>'; print_r($paparCantum); 
 		//echo '$beza::'; print_r($beza); 
 		//echo '$this->lihat->rangka:<br>'; print_r($this->lihat->rangka); 
 		//echo '$this->lihat->cari:<br>'; print_r($this->lihat->cari); 
 		echo '</pre>';
-		*/
+		//*/
 		
         // paparkan ke fail kawalan/ubah.php
-		//$this->lihat->baca('kawalan/papar', 1);
+		$this->lihat->cariNama=$paparCantum;
+		$this->lihat->baca('kawalan/jadual', 1);
 
     }    
 
