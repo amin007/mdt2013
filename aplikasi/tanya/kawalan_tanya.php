@@ -432,7 +432,7 @@ class Kawalan_Tanya extends Tanya
 		$cantumSql2 = implode("\rUNION\r", $cantum2);
 		$sql3 = $cantumSql . "\rUNION\r\r"
 			  . 'SELECT newss,\'JUM\' as bulan,nama,msic,terima,format(sum(hasil),0) hasil,format(sum(dptLain),0),web,'
-			  . 'format(sum(stok),0) stok,format(sum(staf),0) staf,format(sum(gaji),0) gaji, sebab, outlet'
+			  . 'format(sum(stok),0) stok,format(sum(staf)/12,0) staf,format(sum(gaji),0) gaji, \'JUM\' AS sebab, outlet'
 			  . "\r FROM ($cantumSql2) as JUMLAH \rUNION\r\r"
 			  . 'SELECT newss,\'PURATA\' as bulan,nama,msic,terima,format(sum(hasil)/12,0) hasil,format(sum(dptLain)/12,0),web,'
 			  . 'format(sum(stok)/12,0) stok,format(sum(staf)/12,0) staf,format(sum(gaji)/12,0) gaji, sebab, outlet'
